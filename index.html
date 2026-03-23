@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sushma Kumari - Full Stack Web Developer | AI Enthusiast | B.Tech CSE">
+    <title>Sushma Kumari | Portfolio</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --primary: #8b5cf6; /* Modern Purple */
+            --secondary: #3b82f6; /* Modern Blue */
+            --accent-gradient: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --white: #ffffff;
+            --glass: rgba(30, 41, 59, 0.7);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            line-height: 1.6; 
+            color: var(--text-main); 
+            scroll-behavior: smooth; 
+            background: var(--bg-dark); 
+            overflow-x: hidden;
+        }
+        .container { max-width: 1200px; margin: auto; padding: 0 2rem; }
+
+        /* Navigation */
+        header { 
+            background: rgba(15, 23, 42, 0.9); 
+            padding: 1.2rem 0; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            box-shadow: 0 4px 30px rgba(0,0,0,0.3); 
+            backdrop-filter: blur(12px); 
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 700; font-size: 1.8rem; color: var(--white); letter-spacing: -1px; text-decoration: none; }
+        .logo span { color: var(--primary); }
+        .nav-links { display: flex; list-style: none; }
+        .nav-links li a { margin-left: 2rem; text-decoration: none; color: var(--text-dim); font-weight: 500; font-size: 0.95rem; transition: 0.3s; }
+        .nav-links li a:hover { color: var(--primary); }
+
+        /* Hero Section */
+        .hero { 
+            min-height: 90vh; 
+            display: flex; 
+            align-items: center; 
+            background: radial-gradient(circle at top right, rgba(139, 92, 246, 0.1), transparent),
+                        radial-gradient(circle at bottom left, rgba(59, 130, 246, 0.1), transparent);
+            padding: 2rem 0; 
+        }
+        .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center; }
+        .hero-content h2 { color: var(--secondary); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 1rem; }
+        .hero-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.1; margin-bottom: 1.5rem; }
+        .highlight { background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-content p { font-size: 1.1rem; color: var(--text-dim); margin-bottom: 2.5rem; max-width: 500px; }
+        
+        .profile-container { position: relative; display: flex; justify-content: center; }
+        .profile-img { 
+            width: 100%; 
+            max-width: 380px; 
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; 
+            border: 8px solid rgba(255,255,255,0.05); 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4); 
+            transition: 0.5s; 
+            object-fit: cover; 
+            aspect-ratio: 1/1; 
+            background: var(--bg-card);
+        }
+        .profile-img:hover { border-radius: 50%; transform: scale(1.02); border-color: var(--primary); }
+
+        /* General UI Elements */
+        .btn { padding: 1rem 2.2rem; border-radius: 12px; text-decoration: none; display: inline-block; font-weight: 600; transition: 0.3s; border: none; cursor: pointer; text-align: center; font-size: 0.95rem; }
+        .btn-primary { background: var(--accent-gradient); color: white; box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(139, 92, 246, 0.4); }
+        .btn-secondary { background: rgba(255,255,255,0.05); color: var(--white); border: 1px solid rgba(255,255,255,0.1); margin-left: 1rem; }
+        .btn-secondary:hover { background: rgba(255,255,255,0.1); border-color: var(--secondary); }
+
+        section { padding: 8rem 0; }
+        .section-title { text-align: center; margin-bottom: 5rem; }
+        .section-title h2 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 0.5rem; color: var(--white); }
+        .section-title::after { content: ''; width: 60px; height: 4px; background: var(--accent-gradient); display: block; margin: 1rem auto 0; border-radius: 10px; }
+
+        /* About Section */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .about-card { background: var(--bg-card); padding: 2.5rem; border-radius: 24px; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .about-text h3 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 1.5rem; color: var(--secondary); }
+        .about-text p { color: var(--text-dim); margin-bottom: 1.5rem; font-size: 1.05rem; }
+        .skills-list { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.5rem; }
+        .skill-tag { background: rgba(139, 92, 246, 0.1); color: var(--primary); padding: 0.6rem 1.4rem; border-radius: 10px; font-weight: 600; font-size: 0.85rem; border: 1px solid rgba(139, 92, 246, 0.2); transition: 0.3s; }
+        .skill-tag:hover { background: var(--primary); color: white; transform: translateY(-2px); }
+
+        /* Experience Timeline */
+        .timeline { border-left: 2px solid rgba(255,255,255,0.1); margin-left: 20px; padding-left: 40px; position: relative; }
+        .timeline-item { margin-bottom: 4rem; position: relative; }
+        .timeline-item::before { content: ''; width: 12px; height: 12px; background: var(--primary); border: 4px solid var(--bg-dark); border-radius: 50%; position: absolute; left: -47px; top: 8px; box-shadow: 0 0 15px var(--primary); }
+        .timeline-content { background: var(--bg-card); padding: 2.5rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); transition: 0.4s; }
+        .timeline-content:hover { border-color: var(--secondary); transform: translateX(10px) translateY(-5px); background: #232f45; }
+        .timeline-date { color: var(--secondary); font-weight: 700; font-size: 0.85rem; margin-bottom: 0.8rem; display: block; letter-spacing: 1px; }
+
+        /* Projects */
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; }
+        .project-card { background: var(--bg-card); border-radius: 24px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); transition: 0.4s; display: flex; flex-direction: column; }
+        .project-card:hover { transform: translateY(-12px); border-color: var(--primary); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+        .project-image-placeholder { height: 200px; background: linear-gradient(45deg, #1e293b, #334155); display: flex; align-items: center; justify-content: center; font-size: 3rem; color: var(--primary); position: relative; }
+        .project-image-placeholder::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--accent-gradient); opacity: 0.1; }
+        .project-info { padding: 2rem; flex-grow: 1; }
+        .project-tag { font-size: 0.75rem; font-weight: 700; color: var(--secondary); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.5rem; display: block; }
+        .project-info h3 { margin-bottom: 1rem; color: var(--white); font-size: 1.4rem; }
+        .project-info p { color: var(--text-dim); line-height: 1.5; font-size: 0.95rem; }
+
+        /* Certificates Slider */
+        .slider-container { position: relative; max-width: 1100px; margin: auto; padding: 20px 0; overflow: hidden; }
+        .cert-card { 
+            min-width: calc(33.33% - 14px); 
+            height: 240px; 
+            position: relative; 
+            border-radius: 20px; 
+            overflow: hidden; 
+            border: 1px solid rgba(255,255,255,0.1);
+            background: var(--bg-card);
+        }
+        .cert-card img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.8); transition: 0.5s; }
+        .cert-card:hover img { filter: brightness(0.4); transform: scale(1.05); }
+        
+        /* New Download Overlay Style */
+        .cert-download-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.7);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--white);
+            z-index: 5;
+        }
+        .cert-card:hover .cert-download-overlay { opacity: 1; }
+        .cert-download-overlay i { font-size: 2rem; color: var(--secondary); margin-bottom: 8px; transform: translateY(10px); transition: 0.3s; }
+        .cert-card:hover .cert-download-overlay i { transform: translateY(0); }
+        .cert-download-overlay span { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; }
+
+        .cert-label { 
+            position: absolute; 
+            bottom: 0; 
+            width: 100%; 
+            background: linear-gradient(transparent, rgba(15, 23, 42, 0.95)); 
+            color: white; 
+            padding: 1.2rem 1rem; 
+            font-size: 0.85rem; 
+            font-weight: 500;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .slide-btn { 
+            position: absolute; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            z-index: 10; 
+            background: var(--accent-gradient); 
+            color: white; 
+            border: none; 
+            width: 45px; 
+            height: 45px; 
+            border-radius: 12px; 
+            cursor: pointer; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: 0.3s;
+        }
+        .slide-btn:hover { transform: translateY(-50%) scale(1.1); }
+        .slide-btn.prev { left: 10px; }
+        .slide-btn.next { right: 10px; }
+
+        /* Contact Section Refined */
+        .contact-box { background: var(--bg-card); border-radius: 32px; padding: clamp(2rem, 6vw, 4rem); display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem; color: white; border: 1px solid rgba(255,255,255,0.05); }
+        .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+        .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+        .form-group label { font-size: 0.8rem; font-weight: 600; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
+        .form-group input, .form-group textarea { 
+            padding: 1rem; 
+            border-radius: 12px; 
+            border: 1px solid rgba(255,255,255,0.1); 
+            background: rgba(15, 23, 42, 0.6); 
+            color: white; 
+            outline: none; 
+            font-family: inherit; 
+            transition: 0.3s;
+        }
+        .form-group input:focus, .form-group textarea:focus { border-color: var(--primary); background: rgba(15, 23, 42, 0.9); box-shadow: 0 0 15px rgba(139, 92, 246, 0.2); }
+        
+        #form-success-msg { display: none; color: #10b981; margin-top: 1rem; font-weight: 600; font-size: 0.9rem; }
+        #form-error-msg { display: none; color: #ef4444; margin-top: 1rem; font-weight: 600; font-size: 0.9rem; }
+
+        footer { text-align: center; padding: 5rem 0; background: #080d1a; color: var(--text-dim); font-size: 0.95rem; border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer-links { margin-top: 1.5rem; }
+        .footer-links a { color: var(--secondary); text-decoration: none; margin: 0 15px; font-weight: 500; transition: 0.3s; }
+        .footer-links a:hover { color: var(--primary); }
+
+        @media (max-width: 968px) {
+            .hero-grid, .about-grid, .contact-box { grid-template-columns: 1fr; text-align: center; }
+            .form-row { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .profile-container { order: -1; }
+            .cert-card { min-width: 100%; }
+            .contact-form { text-align: left; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">SM<span></span></a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#certificates">Certificates</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <h2>Full Stack Developer </h2>
+                <h1>Hi, I'm <br><span class="highlight">Sushma Kumari</span></h1>
+                <p>A passionate developer weaving logic into creative digital solutions, focusing on Full Stack & AI.</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">Start a Conversation</a>
+                    <a href="suku.pdf" class="btn btn-secondary" download><i class="fas fa-download"></i> Download CV</a>
+                </div>
+            </div>
+            <div class="profile-container">
+                <img src="ds.jpg" alt="Sushma Kumari" class="profile-img" onerror="this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=Sushma&backgroundColor=6366f1'">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div style="display: flex; justify-content: center;">
+                    <div class="about-card">
+                        <h4 style="color: var(--primary); margin-bottom: 1.5rem; font-size: 1.2rem;"><i class="fas fa-graduation-cap"></i> Academic Profile</h4>
+                        <div style="margin-bottom: 1.5rem;">
+                            <p style="font-weight: 600; color: var(--white); margin-bottom: 0.2rem;">Bachelor of Technology</p>
+                            <p style="font-size: 0.9rem; color: var(--text-dim);">Computer Science & Engineering</p>
+                            <p style="font-size: 0.9rem; color: var(--secondary);">Batch: 2022 - 2026</p>
+                        </div>
+                        
+                        <h4 style="color: var(--secondary); margin: 2rem 0 1rem; font-size: 1.2rem;"><i class="fas fa-map-marker-alt"></i> Location</h4>
+                        <p style="font-size: 0.95rem; color: var(--text-dim);">Ranchi, Jharkhand, India</p>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h3>About Me</h3>
+                    <p>I am a Computer Science enthusiast currently pursuing my B.Tech. My journey in technology started with a curiosity for how websites work, which led me to dive deep into Full Stack Development.</p>
+                    <p>I enjoy solving complex problems and building applications that make an impact. My technical focus lies in creating secure backend systems with PHP/MySQL and exploring AI.</p>
+                    
+                    <div class="skills-list">
+                        <span class="skill-tag">PHP</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">HTML5 / CSS3</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Python (AI/ML)</span>
+                        <span class="skill-tag">Data Structures</span>
+                        <span class="skill-tag">SAP Integration</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" style="background: rgba(15, 23, 42, 0.5);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Experience</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-date">JUL 2025 - AUG 2025</span>
+                        <h3 style="color: var(--white);">Full Stack Development Intern</h3>
+                        <p style="color: var(--primary); font-weight: 600; margin-bottom: 1rem;">Ardent Computech Pvt. Ltd.</p>
+                        <p style="color: var(--text-dim);">Specialized in PHP and MySQL backend logic. Built an end-to-end furniture e-commerce platform.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-date">SEP 2025 - OCT 2025</span>
+                        <h3 style="color: var(--white);">Artificial Intelligence Intern</h3>
+                        <p style="color: var(--primary); font-weight: 600; margin-bottom: 1rem;">CodSoft</p>
+                        <p style="color: var(--text-dim);">Explored machine learning algorithms and intelligent data processing models.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-date">APR 2025 - MAY 2025</span>
+                        <h3 style="color: var(--white);">Industrial Training</h3>
+                        <p style="color: var(--primary); font-weight: 600; margin-bottom: 1rem;">Usha Martin Limited</p>
+                        <p style="color: var(--text-dim);">Hands-on experience with real-time Chat application development and SAP workflows.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Projects</h2>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image-placeholder" style="overflow: hidden; padding: 0;">
+        <!-- Yahan src ke andar image ka link jayega -->
+        <img src="ecommerce.jpg" alt="Chat App" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+    </div>
+                    <div class="project-info">
+                        <span class="project-tag">PHP / MySQL</span>
+                        <h3 style="color: white">Furniture E-Store</h3>
+                        <p>A comprehensive web app with inventory management, cart systems, and secure checkout logic.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image-placeholder" style="overflow: hidden; padding: 0;">
+        <!-- Yahan src ke andar image ka link jayega -->
+        <img src="secure.jpg" alt="Chat App" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+    </div>
+                    <div class="project-info">
+                        <span class="project-tag">Python,HTML,Jupyter Nootbooks</span>
+                        <h3 style="color: white">Intelligent Surveillance and Identification for Secure Campus</h3>
+                        <p> Intelligent Surveillance and Identification for Secure Campus
+Uses AI for smart surveillance: facial recognition, object detection, real-time monitoring</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image-placeholder" style="overflow: hidden; padding: 0;">
+        <!-- Yahan src ke andar image ka link jayega -->
+        <img src="trend.jpg" alt="Chat App" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+    </div>
+                    <div class="project-info">
+                        <span class="project-tag">AI / ML</span>
+                        <h3 style="color: white">Trend Analysis Bot</h3>
+                        <p>Python-based model that predicts performance metrics based on historical business data sets.</p>
+                    </div>
+                </div>
+                     <div class="project-card">
+                   <div class="project-image-placeholder" style="overflow: hidden; padding: 0;">
+        <!-- Yahan src ke andar image ka link jayega -->
+        <img src="women.jpeg" alt="Chat App" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+    </div>
+                    <div class="project-info">
+                        <span class="project-tag">Kotlin,Framework,SQLite</span>
+                        <h3 style="color: white">Women Saftey Shield</h3>
+                        <p>A comprehensive Android safety application designed to help women in emergency situations by providing quick SOS alerts, location sharing, and audio recording capabilities.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image-placeholder" style="overflow: hidden; padding: 0;">
+        <!-- Yahan src ke andar image ka link jayega -->
+        <img src="build.jpg" alt="Chat App" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+    </div>
+                    <div class="project-info">
+                        <span class="project-tag">HTML,CSS,JavaScript,</span>
+                        <h3 style="color: white">Build Chat App</h3>
+                        <p>A real-time chat application designed to enable seamless communication between users through instant messaging.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                 <div class="project-image-placeholder" style="overflow: hidden; padding: 0;">
+        <!-- Yahan src ke andar image ka link jayega -->
+        <img src="omnibrain.jpg" alt="Chat App" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+    </div>
+                    <div class="project-info">
+                        <span class="project-tag">Kotlin,Framework,SQLite</span>
+                        <h3 style="color: white">OmniBrain AI Assistant</h3>
+                        <p>Omnibrain is an AI system designed to bring together different technologies into one smart, seamless experience. </p>
+            </div>
+        </div>
+        
+    </section>
+
+    <!-- Certificates Section -->
+    <section id="certificates" style="background: rgba(15, 23, 42, 0.3);">
+        <div class="container" style="text-align: center;">
+            <div class="section-title">
+                <h2>Certifications</h2>
+            </div>
+            
+            <div class="slider-container">
+                <button onclick="moveSlide(-1)" class="slide-btn prev"><i class="fas fa-chevron-left"></i></button>
+                <button onclick="moveSlide(1)" class="slide-btn next"><i class="fas fa-chevron-right"></i></button>
+
+                <div id="slider" style="display: flex; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); gap: 20px; padding: 10px;">
+                    
+                    <!-- Certificate 1 -->
+                    <div class="cert-card">
+                        <img src="II.jpg" onerror="this.src='https://via.placeholder.com/400x300/1e293b/8b5cf6?text=IIT+Patna+AIML'">
+                        <a href="II.jpg" download="IIT_Patna_Certificate.jpg" class="cert-download-overlay">
+                            <i class="fas fa-cloud-download-alt"></i>
+                            <span>Download</span>
+                        </a>
+                        <div class="cert-label">IIT Patna - AIML</div>
+                    </div>
+
+                    <!-- Certificate 2 -->
+                    <div class="cert-card">
+                        <img src="umu.jpg" onerror="this.src='https://via.placeholder.com/400x300/1e293b/3b82f6?text=IIT+Kharagpur'">
+                        <a href="umu.jpg" download="IIT_Kharagpur_Certificate.jpeg" class="cert-download-overlay">
+                            <i class="fas fa-cloud-download-alt"></i>
+                            <span>Download</span>
+                        </a>
+                        <div class="cert-label">Chat App & sap</div>
+                    </div>
+
+                    <!-- Certificate 3 -->
+                    <div class="cert-card">
+                        <img src="tcs.jpg" onerror="this.src='https://via.placeholder.com/400x300/1e293b/8b5cf6?text=TCS+iON'">
+                        <a href="tcs.jpg" download="TCS_Certificate.jpg" class="cert-download-overlay">
+                            <i class="fas fa-cloud-download-alt"></i>
+                            <span>Download</span>
+                        </a>
+                        <div class="cert-label">TCS iON Career Edge</div>
+                    </div>
+
+                    <!-- Certificate 4 -->
+                    <div class="cert-card">
+                        <img src="ardent.jpg" onerror="this.src='https://via.placeholder.com/400x300/1e293b/3b82f6?text=Ardent+Web+Dev'">
+                        <a href="ardent.jpg" download="Ardent_Certificate.jpg" class="cert-download-overlay">
+                            <i class="fas fa-cloud-download-alt"></i>
+                            <span>Download</span>
+                        </a>
+                        <div class="cert-label">Ardent - Web Dev</div>\
+                    </div>
+                      <!-- Certificate 5 -->
+                    <div class="cert-card">
+                        <img src="mi.jpg" onerror="this.src='https://via.placeholder.com/400x300/1e293b/8b5cf6?text=IIT+Patna+AIML'">
+                        <a href="mi.jpg" download="microsoft_Certificate.jpg" class="cert-download-overlay">
+                            <i class="fas fa-cloud-download-alt"></i>
+                            <span>Download</span>
+                        </a>
+                        <div class="cert-label">microsoft-Data Analysis</div>\
+                    </div>
+                     <!-- Certificate 6 -->
+                    <div class="cert-card">
+                        <img src="cosoft.jpg" onerror="this.src='https://via.placeholder.com/400x300/1e293b/8b5cf6?text=IIT+Patna+AIML'">
+                        <a href="cosoft.jpg" download="Codsoft_Certificate.jpg" class="cert-download-overlay">
+                            <i class="fas fa-cloud-download-alt"></i>
+                            <span>Download</span>
+                        </a>
+                        <div class="cert-label">Codsoft-Artificial intelligence</div>\
+                    </div>
+                     <!-- Certificate 7-->
+                    <div class="cert-card">
+                        <img src="sparkiit.jpg" onerror="this.src='https://via.placeholder.com/400x300/1e293b/8b5cf6?text=IIT+Patna+AIML'">
+                        <a href="sparkiit.jpg" download="sparkit_Certificate.jpg" class="cert-download-overlay">
+                            <i class="fas fa-cloud-download-alt"></i>
+                            <span>Download</span>
+                        </a>
+                        <div class="cert-label">sparkiit-Growth & operation</div>\
+                    </div>
+                     <!-- Certificate 8 -->
+                    <div class="cert-card">
+                        <img src="Learn Tube.jpeg" onerror="this.src='https://via.placeholder.com/400x300/1e293b/8b5cf6?text=IIT+Patna+AIML'">
+                        <a href="Learn Tube.jpeg" download="Learn_tube_Certificate.jpg" class="cert-download-overlay">
+                            <i class="fas fa-cloud-download-alt"></i>
+                            <span>Download</span>
+                        </a>
+                        <div class="cert-label">Learn Tube-java</Tube-java></div>\
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="contact-box">
+                <div>
+                    <h2 style="font-family: 'Playfair Display', serif; font-size: 2.8rem; margin-bottom: 1.5rem;">Let's Connect.</h2>
+                    <p style="color: var(--text-dim); margin-bottom: 3rem; font-size: 1.1rem;">I'm open to full-time opportunities, internships, and collaborative projects. Feel free to reach out!</p>
+                    
+                    <div style="display: flex; gap: 2rem; font-size: 1.8rem;">
+                        <a href="https://www.linkedin.com/in/sushma-kumari-65904730b" style="color: var(--text-main); transition: 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-main)'"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/Sushma0501-su" style="color: var(--text-main); transition: 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-main)'"><i class="fab fa-github"></i></a>
+                        <a href="mailto:sushmamahtomasu@gmail.com" style="color: var(--text-main); transition: 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-main)'"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+
+                <!-- Web3Forms Integration -->
+                <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                    
+                    <!-- [POINT 1] REPLACE 'YOUR_ACTUAL_KEY' WITH YOUR WEB3FORMS KEY -->
+                    <input type="hidden" name="access_key" value="dfa1648f-f639-4264-9b91-13234388b360">
+                    
+                    <input type="hidden" name="subject" value="New Portfolio Message from Sushma's Site">
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required placeholder="John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="john@example.com">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contactNo">Contact No.</label>
+                        <input type="tel" id="contactNo" name="contactNo" required placeholder="+91 00000-00000">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required rows="4" placeholder="Your message here..."></textarea>
+                    </div>
+
+                    <div style="text-align: right;">
+                        <button type="submit" id="submit-btn" class="btn btn-primary" style="width: 100%;">
+                            <i class="fas fa-paper-plane"></i> &nbsp; Send Message
+                        </button>
+                        <p id="form-success-msg">Message sent successfully! I'll get back to you soon. ✅</p>
+                        <p id="form-error-msg">Something went wrong. Please try again later. ❌</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Sushma Kumari. Built with <i class="fas fa-code" style="color: var(--primary);"></i> and passion.</p>
+            <div class="footer-links">
+                <a href="#home">Back to Top</a>
+                <a href="suku.pdf" download>Download CV</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Web3Forms AJAX Submission Logic
+        const form = document.getElementById('contact-form');
+        const btn = document.getElementById('submit-btn');
+        const successMsg = document.getElementById('form-success-msg');
+        const errorMsg = document.getElementById('form-error-msg');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const accessKey = form.querySelector('input[name="access_key"]').value;
+            
+            // [POINT 2] REPLACE 'YOUR_ACTUAL_KEY' HERE AS WELL
+            if(accessKey === "YOUR_ACTUAL_KEY" || accessKey === "") {
+                alert("Please add your actual Web3Forms Access Key in the code first!");
+                return;
+            }
+
+            // Loading state
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            btn.style.opacity = '0.7';
+            btn.disabled = true;
+
+            const formData = new FormData(form);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
+            })
+            .then(async (response) => {
+                let result = await response.json();
+                if (response.status == 200) {
+                    btn.style.display = 'none';
+                    successMsg.style.display = 'block';
+                    errorMsg.style.display = 'none';
+                    form.reset();
+                } else {
+                    console.log(response);
+                    errorMsg.style.display = 'block';
+                }
+            })
+            .catch(error => {
+                console.log(error);
+                errorMsg.style.display = 'block';
+            })
+            .then(function() {
+                setTimeout(() => {
+                    successMsg.style.display = 'none';
+                    errorMsg.style.display = 'none';
+                    btn.style.display = 'inline-block';
+                    btn.innerHTML = '<i class="fas fa-paper-plane"></i> &nbsp; Send Message';
+                    btn.style.opacity = '1';
+                    btn.disabled = false;
+                }, 5000);
+            });
+        });
+
+        // Slider Logic
+        let currentIdx = 0;
+        function moveSlide(dir) {
+            const slider = document.getElementById('slider');
+            const cards = document.querySelectorAll('.cert-card');
+            if (cards.length === 0) return;
+            
+            const cardWidth = cards[0].offsetWidth + 20; 
+            const visibleCards = window.innerWidth > 968 ? 3 : 1;
+            const maxIdx = Math.max(0, cards.length - visibleCards);
+
+            currentIdx += dir;
+            if (currentIdx < 0) currentIdx = 0;
+            if (currentIdx > maxIdx) currentIdx = maxIdx;
+
+            slider.style.transform = `translateX(${-currentIdx * cardWidth}px)`;
+        }
+        
+        window.addEventListener('resize', () => {
+            const slider = document.getElementById('slider');
+            slider.style.transform = 'translateX(0)';
+            currentIdx = 0;
+        });
+    </script>
+</body>
+</html>
